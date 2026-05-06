@@ -32,22 +32,7 @@ app.include_router(knowledge_points.router)
 app.include_router(questions.router)
 app.include_router(study.router)
 
-FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "..", "frontend", "dist")
-if os.path.isdir(FRONTEND_DIR):
-    app.mount("/assets", StaticFiles(directory=os.path.join(FRONTEND_DIR, "assets")), name="assets")
-    
-    @app.get("/{full_path:path}")
-    async def serve_frontend(full_path: str):
-        file_path = os.path.join(FRONTEND_DIR, full_path)
-        if full_path and os.path.isfile(file_path):
-            return FileResponse(file_path)
-        return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
-else:
-    @app.get("/")
-    async def root():
-        return {"message": "301学习系统API", "version": "1.0.0", "tip": "请先运行 npm run build 构建前端"}
-
-
+# ── API 路由必须在 catch-all 前端路由之前定义 ──
 @app.get("/api/subjects")
 async def get_subjects():
     from database import get_db
@@ -74,3 +59,20 @@ async def get_subjects():
             })
 
         return {"subjects": subject_list}
+
+
+# ── 前端静态文件（必须放在所有 API 路由之后）──
+FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "..", "frontend", "dist")
+if os.path.isdir(FRONTEND_DIR):
+    app.mount("/assets", StaticFiles(directory=os.path.join(FRONTEND_DIR, "assets")), name="assets")
+
+    @app.get("/{full_path:path}")
+    async def serve_frontend(full_path: str):
+        file_path = os.path.join(FRONTEND_DIR, full_path)
+        if full_path and os.path.isfile(file_path):
+            return FileResponse(file_path)
+        return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
+else:
+    @app.get("/")
+    async def root():
+        return {"message": "301学习系统API", "version": "1.0.0", "tip": "请先运行 npm run build 构建前端"}
