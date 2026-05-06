@@ -39,7 +39,7 @@ const chapters = ref([])
 const subjectName = ref('')
 const subjectIcon = ref('📘')
 
-const subjectIcons = { advanced_math: '📐', linear_algebra: '📊', probability: '🎲' }
+const subjectIcons = { advanced_math: '📐', linear_algebra: '📊', probability: '🎲', three_calc: '🔢' }
 const chapterKpCounts = ref({})
 
 const getChapterIndex = (name) => {

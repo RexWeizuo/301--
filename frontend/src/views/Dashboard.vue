@@ -149,8 +149,8 @@ const dashboard = ref({
 })
 const subjects = ref([])
 
-const subjectIcons = { advanced_math: '📐', linear_algebra: '📊', probability: '🎲' }
-const subjectNames = { advanced_math: '高等数学', linear_algebra: '线性代数', probability: '概率论与数理统计' }
+const subjectIcons = { advanced_math: '📐', linear_algebra: '📊', probability: '🎲', three_calc: '🔢' }
+const subjectNames = { advanced_math: '高等数学', linear_algebra: '线性代数', probability: '概率论与数理统计', three_calc: '三大计算' }
 
 const getProgress = (id) => {
   const sp = dashboard.value.subject_progress.find(s => s.subject_id === id)

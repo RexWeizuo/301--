@@ -118,7 +118,8 @@ const expandedNodes = ref(new Set())
 const subjectList = [
   { id: 'advanced_math', name: '高等数学', icon: '📐' },
   { id: 'linear_algebra', name: '线性代数', icon: '📊' },
-  { id: 'probability', name: '概率论', icon: '🎲' }
+  { id: 'probability', name: '概率论', icon: '🎲' },
+  { id: 'three_calc', name: '三大计算', icon: '🔢' }
 ]
 
 const filteredData = computed(() => {
