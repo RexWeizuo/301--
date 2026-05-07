@@ -36,6 +36,7 @@ const route = useRoute()
 const navItems = [
   { path: '/', name: '仪表盘', icon: '📊' },
   { path: '/syllabus', name: '考纲', icon: '📚' },
+  { path: '/cui', name: '小崔', icon: '🔢' },
   { path: '/questions', name: '习题', icon: '✍️' },
   { path: '/plan', name: '规划', icon: '📅' }
 ]

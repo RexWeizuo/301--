@@ -1,7 +1,7 @@
 <template>
   <div class="fade-in">
     <div class="mb-8">
-      <router-link :to="`/syllabus/${subjectId}`" class="text-pink-600 hover:text-pink-700 flex items-center gap-2 mb-4 font-bold">
+      <router-link :to="backPath" class="text-pink-600 hover:text-pink-700 flex items-center gap-2 mb-4 font-bold">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
         返回章节列表
       </router-link>
@@ -49,6 +49,9 @@ const subjectId = computed(() => route.params.subjectId)
 const chapterId = computed(() => route.params.chapterId)
 const knowledgePoints = ref([])
 const chapterName = ref('')
+
+const isCui = computed(() => route.path.startsWith('/cui'))
+const backPath = computed(() => isCui.value ? `/cui/${subjectId.value}` : `/syllabus/${subjectId.value}`)
 
 onMounted(async () => {
   try {

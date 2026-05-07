@@ -11,12 +11,16 @@ import ChapterDetail from './views/ChapterDetail.vue'
 import Questions from './views/Questions.vue'
 import QuestionPractice from './views/QuestionPractice.vue'
 import StudyPlan from './views/StudyPlan.vue'
+import CuiSubjects from './views/CuiSubjects.vue'
 
 const routes = [
   { path: '/', component: Dashboard },
   { path: '/syllabus', component: Syllabus },
   { path: '/syllabus/:subjectId', component: SyllabusDetail },
   { path: '/syllabus/:subjectId/chapters/:chapterId', component: ChapterDetail },
+  { path: '/cui', component: CuiSubjects },
+  { path: '/cui/:subjectId', component: SyllabusDetail },
+  { path: '/cui/:subjectId/chapters/:chapterId', component: ChapterDetail },
   { path: '/questions', component: Questions },
   { path: '/questions/practice/:questionId', component: QuestionPractice },
   { path: '/plan', component: StudyPlan }

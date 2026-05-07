@@ -1,9 +1,9 @@
 <template>
   <div class="fade-in">
     <div class="mb-8">
-      <router-link to="/syllabus" class="text-pink-600 hover:text-pink-700 flex items-center gap-2 mb-4 font-bold">
+      <router-link :to="backPath" class="text-pink-600 hover:text-pink-700 flex items-center gap-2 mb-4 font-bold">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-        返回考纲
+         {{ backLabel }}
       </router-link>
       <h1 class="text-4xl font-bold text-gray-900 mb-2">{{ subjectIcon }} {{ subjectName }}</h1>
       <p class="text-gray-600">共 {{ chapters.length }} 个章节，点击章节查看知识点详情</p>
@@ -38,6 +38,10 @@ const subjectId = computed(() => route.params.subjectId)
 const chapters = ref([])
 const subjectName = ref('')
 const subjectIcon = ref('📘')
+
+const isCui = computed(() => route.path.startsWith('/cui'))
+const backPath = computed(() => isCui.value ? '/cui' : '/syllabus')
+const backLabel = computed(() => isCui.value ? '返回小崔' : '返回考纲')
 
 const subjectIcons = { advanced_math: '📐', linear_algebra: '📊', probability: '🎲', three_calc: '🔢' }
 const chapterKpCounts = ref({})

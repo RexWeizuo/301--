@@ -31,6 +31,9 @@ const subjectIcons = { advanced_math: '📐', linear_algebra: '📊', probabilit
 const subjectColors = { advanced_math: '#ec4899', linear_algebra: '#06b6d4', probability: '#f59e0b', three_calc: '#10b981' }
 const getSubjectIcon = (id) => subjectIcons[id] || '📘'
 onMounted(async () => {
-  try { const r = await axios.get('/api/subjects'); subjects.value = r.data.subjects } catch (e) { console.error(e) }
+  try { 
+    const r = await axios.get('/api/subjects'); 
+    subjects.value = r.data.subjects.filter(s => s.id !== 'three_calc')
+  } catch (e) { console.error(e) }
 })
 </script>
