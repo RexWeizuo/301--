@@ -155,7 +155,7 @@ const practiceAll = (questions) => {
 
 onMounted(async () => {
   try {
-    const res = await axios.get('/api/questions/grouped?type=choice')
+    const res = await axios.get('/api/questions/grouped')
     treeData.value = res.data.subjects
   } catch (e) { console.error(e) } finally { loading.value = false }
 })
